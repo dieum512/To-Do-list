@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    index: './src/index.js',    
+    index: './src/index.js',
     print: './src/print.js',
   },
   devServer: {
@@ -11,8 +11,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html',    
-    }),    
+      template: './src/index.html',
+    }),
   ],
   output: {
     filename: '[name].bundle.js',
@@ -24,15 +24,15 @@ module.exports = {
     runtimeChunk: 'single',
   },
   module: {
-    rules: [    
-      {    
-        test: /\.css$/i,    
-        use: ['style-loader', 'css-loader'],    
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,    
-        type: 'asset/resource',    
-      },  
-    ],    
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+      },
+    ],
   },
 };
