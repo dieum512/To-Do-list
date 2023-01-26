@@ -1,0 +1,82 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #010118;
+  color: #fff;
+}
+
+input {
+  border: 0;
+}
+
+input::placeholder {
+  font-style: italic;
+}
+
+.todo-main-div {
+  background-color: #fff;
+  color: #000;
+  margin: 30px 5%;
+}
+
+.to-do-tittle {
+  padding: 80px 0;
+  text-align: center;
+  color: #063506;
+}
+
+.to-do-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  border-bottom: 1px solid #f5f5f5;
+  background-color: #6d3c0e;
+}
+
+.to-do-header i {
+  background-color: #6d3c0e;
+}
+
+.first-form {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #dbdada;
+  padding: 10px 15px;
+}
+
+.clear-btn {
+  text-align: center;
+  padding: 10px 15px;
+  background-color: #134b13;
+}
+
+.to-do-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15px;
+  border-bottom: 1px solid #dbdada;
+}
+
+.task-div {
+  display: flex;
+  gap: 5px;
+}
+
+@media (min-width: 768px) {
+  .todo-main-div {
+    margin: 0 25%;
+    align-items: center;
+  }
+}
+
+@media (min-width: 1000px) {
+  .todo-main-div {
+    margin: 0 30%;
+    align-items: center;
+  }
+}
