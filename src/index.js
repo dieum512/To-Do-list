@@ -38,13 +38,14 @@ function addTodo() {
   const isDupplicated = listTodos.some((todo) => todo.description.toUpperCase() === todoValue.toUpperCase());
 
   if (isEmpty) {
-    alert('The to do\'s task is empty');
+    alert(`The to do's task is empty`);
   } else if (isDupplicated) {
     alert('The to do task already exist');
   } else {
     const todo = {
       description: todoValue,
       completed: false,
+      index: listTodos.length +1,
     };
 
     listTodos.push(todo);
@@ -57,7 +58,7 @@ function renderTodo() {
   todoList.innerHTML = '';
 
   // RENDER TODO
-  listTodos.forEach((todo, index) => {
+  listTodos.forEach((todo,index) => {
     todoList.innerHTML += `
   <li>
     <div class="todo" id=${index}>
