@@ -68,7 +68,6 @@ function renderTodo() {
       <i class="fa-solid fa-trash" data-action="delete"></i>
     </div>
   </li>`;
-    // todoList.clearFields();
   });
 }
 
