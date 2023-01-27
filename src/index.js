@@ -1,3 +1,7 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable max-len */
+/* eslint-disable no-alert */
+/* eslint-disable no-unused-expressions */
 // import _ from 'lodash';
 import './style.css';
 
@@ -12,10 +16,10 @@ let listTodos = JSON.parse(localStorage.getItem('listTodos')) || [];
 // FIRST RENDRER
 renderTodo();
 
-// submit form 
+// submit form
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  
+
   addTodo();
   renderTodo();
   localStorage.setItem('listTodos', JSON.stringify(listTodos));
@@ -27,22 +31,22 @@ form.addEventListener('submit', (e) => {
 function addTodo() {
   const todoValue = todoInput.value;
 
-  // check if empty to do 
+  // check if empty to do
   const isEmpty = todoValue === '';
 
   // CHEK FOR DUPLICATE TO DO
   const isDupplicated = listTodos.some((todo) => todo.description.toUpperCase() === todoValue.toUpperCase());
 
   if (isEmpty) {
-    alert(`The to do's task is empty`);
+    alert('The to do\'s task is empty');
   } else if (isDupplicated) {
-    alert(`The to do task already exist`);
+    alert('The to do task already exist');
   } else {
     const todo = {
       description: todoValue,
-      completed : false,
-    }
-  
+      completed: false,
+    };
+
     listTodos.push(todo);
   }
 }
@@ -50,7 +54,7 @@ function addTodo() {
 // RENDER TODO
 function renderTodo() {
   // CLEAR ELEMENT BEFORE THE RE-RENDER
-  todoList.innerHTML = "";
+  todoList.innerHTML = '';
 
   // RENDER TODO
   listTodos.forEach((todo, index) => {
@@ -65,13 +69,13 @@ function renderTodo() {
     </div>
   </li>`;
     // todoList.clearFields();
-  })
+  });
 }
 
 // ADD EVENT LISTNER FOR ALL TODOS
 todoList.addEventListener('click', (e) => {
-  const target = e.target;
-  const parentElement = target.parentElement;
+  const { target } = e;
+  const { parentElement } = target;
 
   if (parentElement.className !== 'todo') return;
 
@@ -80,18 +84,16 @@ todoList.addEventListener('click', (e) => {
   const todoId = Number(todo.id);
 
   // TARGET ACTION
-  const action = target.dataset.action;
+  const { action } = target.dataset;
 
-  action === "delete" && deleteTodo(todoId)
-
-  console.log(todoId, action)
-})
+  action === 'delete' && deleteTodo(todoId);
+});
 
 // DELETE TODO
 function deleteTodo(todoId) {
   listTodos = listTodos.filter((todo, index) => index !== todoId);
 
   // RE RENDER
-  renderTodo()
+  renderTodo();
   localStorage.setItem('listTodos', JSON.stringify(listTodos));
 }
