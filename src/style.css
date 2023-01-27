@@ -55,7 +55,7 @@ input::placeholder {
   background-color: #134b13;
 }
 
-.to-do-list li .todo{
+.to-do-list li .todo {
   display: flex;
   justify-content: space-between;
   padding: 10px 15px;
