@@ -1,26 +1,22 @@
-/* eslint-disable import/prefer-default-export */
-/* eslint-disable array-callback-return */
 /* eslint-disable import/no-cycle */
 /* eslint-disable no-restricted-globals */
-/* eslint-disable no-use-before-define */
-/* eslint-disable import/prefer-default-export */
 import {
-//   clearAll,
+  clearAll,
   form,
   arr,
   editFormArr,
 } from './index.js';
 
-//   export function clearCompleted() {
-//     clearAll.addEventListener('click', () => {
-//       const newArr = JSON.parse(localStorage.getItem('List')) || [];
-//       const filteredCompletedTask = newArr.filter(
-//         (item) => item.completed !== true,
-//       );
-//       localStorage.setItem('List', JSON.stringify(filteredCompletedTask));
-//       location.reload();
-//     });
-//   }
+export function clearCompleted() {
+  clearAll.addEventListener('click', () => {
+    const newArr = JSON.parse(localStorage.getItem('List')) || [];
+    const filteredCompletedTask = newArr.filter(
+      (item) => item.completed !== true,
+    );
+    localStorage.setItem('List', JSON.stringify(filteredCompletedTask));
+    location.reload();
+  });
+}
 
 export function addTodo() {
   form.addEventListener('submit', () => {
@@ -31,7 +27,7 @@ export function addTodo() {
       arr.push({
         name: toDo,
         completed: false,
-        index: arr.length,
+        index: arr.length + 1,
       });
 
       localStorage.setItem('List', JSON.stringify(arr));
