@@ -5,11 +5,11 @@
 /* eslint-disable import/prefer-default-export */
 
 import './style.css';
-import { dragDrop } from './dragtask';
-import { update } from './update';
+import { dragDrop } from './dragtask.js';
+import { update } from './update.js';
 import {
- addTodo, clearCompleted, editTask, removeElement,
-} from './addandremove';
+  addTodo, editTask, removeElement,
+} from './addandremove.js';
 
 export const list = document.querySelector('.to-do-list');
 export const form = document.getElementById('form');
@@ -26,12 +26,12 @@ arr.forEach((task) => {
   <li class="item" draggable="true">
     <div class="check">
       <input type="checkbox" class="check-box" name="checkbox" id= "${
-        task.index
-      }" ${task.completed ? 'checked' : ''}>
+  task.index
+}" ${task.completed ? 'checked' : ''}>
       <form id="edit-form">
         <input type="text" class="text ${
-          task.completed
-        }" id= ${task.index} value="${task.name}">
+  task.completed
+}" id= ${task.index} value="${task.name}">
       </form>
     </div>
     <i class="uil uil-trash-alt trash"></i>

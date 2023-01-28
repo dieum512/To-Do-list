@@ -3,7 +3,7 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable no-use-before-define */
 /* eslint-disable import/prefer-default-export */
-import { task, list } from './index';
+import { task, list } from './index.js';
 
 export function dragDrop() {
   task.forEach((item) => {
