@@ -12,8 +12,8 @@
     />
     <title>To do list</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap"
       rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
     />
   </head>
   <body class="hello">
@@ -23,20 +23,26 @@
         <div class="to-do-header">
           <h3>Today's To Do</h3>
           <button class="refresh">
-            <i class="fa-solid fa-rotate fa-2x fa-border-none"></i>
+            <i class="fa-solid fa-rotate fa-2x fa-border-none refresh"></i>
           </button>
         </div>
+        <!-- to do list -->
         <div class="to-do-body">
-          <form class="first-form" action="">
-            <input
-              type="text"
-              class="add-task"
-              placeholder="Add to your list..."
-            />
-            <button type="submit" class="add-btn">Add</button>
+          <form id="form">
+            <div class="add-item">
+              <input
+                type="text"
+                name="input"
+                id="addlist"
+                placeholder="Add to your list..."
+              />
+            </div>
+            <button type="submit">Add</button>
           </form>
+          <!-- tasks -->
           <ul class="to-do-list"></ul>
-          <div class="clear-btn">Clear all completed</div>
+          <!-- <div class="clear-btn">Clear all completed</div> -->
+          <button type="submit" id="clear-btn">Clear All completed</button>
         </div>
       </div>
     </section>

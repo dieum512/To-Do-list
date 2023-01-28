@@ -42,24 +42,30 @@ input::placeholder {
   background-color: #6d3c0e;
 }
 
-.first-form {
+#form {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #dbdada;
   padding: 10px 15px;
 }
 
-.clear-btn {
+#clear-btn {
   text-align: center;
   padding: 10px 15px;
   background-color: #134b13;
+  width: 100%;
 }
 
-.to-do-list li .todo {
+.to-do-list li {
   display: flex;
   justify-content: space-between;
   padding: 10px 15px;
   border-bottom: 1px solid #dbdada;
+}
+
+.check {
+  display: flex;
+  gap: 30px;
 }
 
 .task-div {

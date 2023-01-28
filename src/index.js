@@ -1,99 +1,58 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable import/no-cycle */
+/* eslint-disable no-restricted-globals */
 /* eslint-disable no-use-before-define */
-/* eslint-disable max-len */
-/* eslint-disable no-alert */
-/* eslint-disable no-unused-expressions */
-// import _ from 'lodash';
+/* eslint-disable import/prefer-default-export */
+
 import './style.css';
+import { dragDrop } from './dragtask';
+import { update } from './update';
+import {
+ addTodo, clearCompleted, editTask, removeElement,
+} from './addandremove';
 
-// select the form element
-const form = document.querySelector('.first-form');
-const todoInput = document.querySelector('.add-task');
-const todoList = document.querySelector('.to-do-list');
+export const list = document.querySelector('.to-do-list');
+export const form = document.getElementById('form');
+export const clearAll = document.querySelector('#clear-btn');
+export const arr = JSON.parse(localStorage.getItem('List')) || [];
+const refresh = document.querySelector('.refresh');
 
-// variables
-let listTodos = JSON.parse(localStorage.getItem('listTodos')) || [];
-
-// FIRST RENDRER
-renderTodo();
-
-// submit form
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-
-  addTodo();
-  renderTodo();
-  localStorage.setItem('listTodos', JSON.stringify(listTodos));
-  // RESET FORM
-  form.reset();
+refresh.addEventListener('click', () => {
+  location.reload();
 });
 
-// add a to do
-function addTodo() {
-  const todoValue = todoInput.value;
-
-  // check if empty to do
-  const isEmpty = todoValue === '';
-
-  // CHEK FOR DUPLICATE TO DO
-  const isDupplicated = listTodos.some((todo) => todo.description.toUpperCase() === todoValue.toUpperCase());
-
-  if (isEmpty) {
-    alert('The to do\'s task is empty');
-  } else if (isDupplicated) {
-    alert('The to do task already exist');
-  } else {
-    const todo = {
-      description: todoValue,
-      completed: false,
-      index: listTodos.length + 1,
-    };
-
-    listTodos.push(todo);
-  }
-}
-
-// RENDER TODO
-function renderTodo() {
-  // CLEAR ELEMENT BEFORE THE RE-RENDER
-  todoList.innerHTML = '';
-
-  // RENDER TODO
-  listTodos.forEach((todo, index) => {
-    todoList.innerHTML += `
-  <li>
-    <div class="todo" id=${index}>
-      <div class="task-div">
-        <input type="checkbox" />
-        <p>${todo.description}</p>
-      </div>
-      <i class="fa-solid fa-trash" data-action="delete"></i>
+arr.forEach((task) => {
+  list.innerHTML += `
+  <li class="item" draggable="true">
+    <div class="check">
+      <input type="checkbox" class="check-box" name="checkbox" id= "${
+        task.index
+      }" ${task.completed ? 'checked' : ''}>
+      <form id="edit-form">
+        <input type="text" class="text ${
+          task.completed
+        }" id= ${task.index} value="${task.name}">
+      </form>
     </div>
+    <i class="uil uil-trash-alt trash"></i>
   </li>`;
-  });
-}
-
-// ADD EVENT LISTNER FOR ALL TODOS
-todoList.addEventListener('click', (e) => {
-  const { target } = e;
-  const { parentElement } = target;
-
-  if (parentElement.className !== 'todo') return;
-
-  // TO DO ID
-  const todo = parentElement;
-  const todoId = Number(todo.id);
-
-  // TARGET ACTION
-  const { action } = target.dataset;
-
-  action === 'delete' && deleteTodo(todoId);
 });
 
-// DELETE TODO
-function deleteTodo(todoId) {
-  listTodos = listTodos.filter((todo, index) => index !== todoId);
+export const editForm = document.querySelectorAll('#edit-form');
+export const editFormArr = Array.from(editForm);
+export const editInput = document.querySelectorAll('.text');
+export const editInputArr = Array.from(editInput);
 
-  // RE RENDER
-  renderTodo();
-  localStorage.setItem('listTodos', JSON.stringify(listTodos));
-}
+export const trash = document.querySelectorAll('.trash');
+export const task = document.querySelectorAll('.item');
+
+editTask();
+window.addEventListener('load', () => {
+  addTodo();
+  dragDrop();
+  update();
+});
+
+// clearCompleted();
+
+removeElement(task, trash);
