@@ -8,7 +8,7 @@ import './style.css';
 import { dragDrop } from './dragtask.js';
 import { update } from './update.js';
 import {
-  addTodo, editTask, removeElement,
+  addTodo, clearCompleted, editTask, removeElement,
 } from './addandremove.js';
 
 export const list = document.querySelector('.to-do-list');
@@ -53,6 +53,6 @@ window.addEventListener('load', () => {
   update();
 });
 
-// clearCompleted();
+clearCompleted();
 
 removeElement(task, trash);
